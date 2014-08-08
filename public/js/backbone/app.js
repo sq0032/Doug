@@ -29,20 +29,26 @@ app.PostView = Backbone.View.extend({
         var title   = this.post.get('title');
         var photo   = this.post.get('photo');
         
-        var html    =
-            "<h4>"+title+"</h4>\
-            <p>"+text+"<p>\
-            <div class='clear'>\
-            <div style='float:right'>written by <strong>"+name+"</strong> at <strong>"+date+"</strong></div>\
-            <div class='clear'>";
+        var titleHtml   = "<h4>"+title+"</h4>";
+        var textHtml    = "<p>"+text+"<p>";
+        var dateHtml    = "<div class='clear'>\
+                            <div style='float:right'>written by <strong>"+name+"</strong> at <strong>"+date+"</strong></div>\
+                            <div class='clear'>";
         
         var buttonHtml  = "<button style='float:right'>Delete</button>";
         var photoHtml   = "<div class='clear'></div><img src='uploads/"+photo+"' width='500' height='300'>";
-        this.$el.html(html);
+        
+        var html = '';
+//        this.$el.html(titleHtml);
         if(typeof(photo)!='undefined'){
-            this.$el.prepend(photoHtml);
+//            this.$el.prepend(photoHtml);
+            html = buttonHtml+titleHtml+photoHtml+textHtml+dateHtml;
+        }else{
+            html = buttonHtml+titleHtml+textHtml+dateHtml;
         }
-        this.$el.prepend(buttonHtml);
+        this.$el.html(html);
+        
+//        this.$el.prepend(buttonHtml);
     },
     deletePost: function(){
         this.post.destroy();
@@ -89,7 +95,9 @@ app.SubmitView = Backbone.View.extend({
             //url: '/photo_upload',
             autoUpload: false,
             dataType: 'multipart/form-data',
-            singleFileUploads:true
+            singleFileUploads:true,
+            disableImageResize: false,
+            imageMaxWidth:800,
         }).on('fileuploadadd', function(e, data){
             that.photo = data;
             that.photo.url = '/photo_upload';
@@ -132,6 +140,7 @@ app.SubmitView = Backbone.View.extend({
                     that.$('input').val('');
                     that.$('textarea').val('');
                     that.$el.modal('hide');
+                    that.photo = null;
                 },
                 error: function(model, response){
                     alert(response);

@@ -7,33 +7,33 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default" role="navigation">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Brand</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Info#1</a></li>
-                <li><a href="#">Info#1</a></li>
-                <li><a href="#">Info#1</a></li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+        <nav class="navbar navbar-default " role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Asahi Judo Club</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">F.A.Q</a></li>
+                            <li><a href="#">Link#3</a></li>
+                            <li><a href="#">Link#4</a></li>
+                      </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
         </nav>
 
         <div id="banner" class="row">
             <div id="logo" class="col-sm-9">
-                <img src="img/Conrad.jpg">
+                <img src="img/Asahi Title4.jpg">
             </div>
             <div id="FB" class="col-sm-3 hidden-xs">
                 <button type="button" class="" style="float:right; clear:both; width:50%">Join us</button>
@@ -52,26 +52,24 @@
                     About
                 </div>
                 <div class="external-link">
-                    Link#1
-                </div>
-                <div class="external-link">
-                    Link#2
+                    F.A.Q
                 </div>
                 <div class="external-link">
                     Link#3
                 </div>
+                <div class="external-link">
+                    Link#4
+                </div>
                 <div id="tweet" class="external-link">
-<a class="twitter-timeline" href="https://twitter.com/Sq0032Hsu" data-widget-id="497739728561532928">@Sq0032Hsu的推文</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
+                    <a class="twitter-timeline" href="https://twitter.com/search?q=Judo+Club" data-widget-id="497804546953863168">Tweets aobut "Judo Club"</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
             </div>
             <div id="timeline" class="col-sm-8">
                 <div id="new-post-form" style="">
                     <div id="new-post">
                     <button class="" data-toggle="modal" data-target="#postModal">
-                      Launch demo modal
+                      Write story
                     </button>
 <!--                        <button>Write my story</button>-->
                     </div>
@@ -89,65 +87,63 @@
 
                 <!-- Modal -->
                 <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New Post</h4>
-                      </div>
-                      <div class="modal-body" style="height:auto">
-                        <form role="form">
-                          <div class="form-group">
-                            <label for="InputName">Writter's Name</label>
-                            <input type="text" class="form-control" id="InputName" placeholder="Enter your name">
-                          </div>
-                          <div class="form-group">
-                            <label for="InputTitle">Title</label>
-                            <input type="text" class="form-control" id="InputTitle" placeholder="Enter title">
-                          </div>
-                          <div class="form-group">  
-                            <label for="InputPassword">Password</label>
-                            <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-                          </div>
-                            
-    <!-- The fileinput-button span is used to style the file input field as button -->
-                            
-    <span class="btn btn-success fileinput-button">
-        <i class="glyphicon glyphicon-plus"></i>
-        <span>Select photo...</span>
-        <!-- The file input field used as target for the file upload widget -->
-        <input id="fileupload" type="file" name="files[]" multiple>
-    </span>
-    <br>
-    <br>
-    <!-- The global progress bar -->
-<!--    <div id="progress" class="progress">
-        <div class="progress-bar progress-bar-success"></div>
-    </div>-->
-    <!-- The container for the uploaded files -->
-    <div id="files" class="files"></div>
-    <br>
-
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox"> Put photo on the top
-                            </label>
-                          </div>
-                        </form>
-                            <div class="form-group"> 
-                                <textarea class="form-control" rows="10" placeholder="Write your story"></textarea>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel">New Post</h4>
                             </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Post</button>
-                      </div>
+                            <div class="modal-body" style="height:auto">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="InputName">Writter's Name</label>
+                                        <input type="text" class="form-control" id="InputName" placeholder="Enter your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputTitle">Title</label>
+                                        <input type="text" class="form-control" id="InputTitle" placeholder="Enter title">
+                                    </div>
+                                    <div class="form-group">  
+                                        <label for="InputPassword">Password</label>
+                                        <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                                    </div>
+                            
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
+
+                                    <span class="btn btn-success fileinput-button">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Select photo...</span>
+                                        <!-- The file input field used as target for the file upload widget -->
+                                        <input id="fileupload" type="file" name="files[]" multiple>
+                                    </span>
+                                    <br>
+                                    <br>
+                                    <!-- The global progress bar -->
+                                    <!--<div id="progress" class="progress">
+                                        <div class="progress-bar progress-bar-success"></div>
+                                    </div>-->
+                                    <!-- The container for the uploaded files -->
+                                    <div id="files" class="files"></div>
+                                    <br>
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Put photo on the top
+                                        </label>
+                                    </div>
+                                </form>
+                                <div class="form-group"> 
+                                    <textarea class="form-control" rows="10" placeholder="Write your story"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Post</button>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-
                 <div class="divide-line time">Today</div>
-
             </div>
         </div>
     </div>
