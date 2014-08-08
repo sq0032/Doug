@@ -1,0 +1,166 @@
+/*
+.ui-selected,
+.ui-selecting{
+	background-color	:#C0C0C0;
+	color				:#000000;
+}
+*/
+
+.click-selected{
+	background-color	:#C0C0C0;
+	color				:#000000;
+}
+
+/*
+.ui-selecting{
+	background-color	:#C0C0C0;
+	color				:#000000;
+}
+
+.ui-unselecting{
+	background-color	:#ffffff;
+	color				:#C0C0C0;
+}
+*/
+
+.selectable{
+	width		:120px;
+	margin		:auto;
+	border		:1px black solid;
+	text-align	:center;
+	color		:#C0C0C0;
+	float		:left;
+}
+
+.ui-widget-content{
+	min-height	:25px;
+	border		:1px black solid;
+}
+
+.ui-selectable-helper{
+	border		:1px black dotted;
+	position	:absolute;
+}
+
+.rowdiv{
+	display		:inline;
+}
+body {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+/*    overflow-x: hidden;*/
+}
+
+#banner {
+    position: relative;   
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    
+/*    background-color: #f0f0f0;*/
+/*    min-height: 50px;*/
+/*    border-bottom: 1px black solid;*/
+/*    margin-bottom: 10;*/
+}
+#banner img{
+    width: 100%;
+/*    border: 1px red solid;*/
+}
+
+
+img {
+    
+}
+
+#logo {
+/*    position: absolute;*/
+/*    left: 0px;*/
+/*    right: 250px;*/
+/*    float: left;*/
+    text-align: center;
+    
+}
+
+#FB {
+/*    position: absolute;*/
+/*    width: 250px;*/
+/*    right: 0px;*/
+    padding-top: 20px;
+/*    text-align: center;*/
+}
+
+#FB button{
+    margin: 5px;
+/*    float: right;*/
+/*    clear: both;*/
+/*    margin-bottom: 20px;*/
+/*    margin-right: 40px;*/
+    width: 150px;
+            
+}
+
+#FB-mobile {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;   
+}
+
+.divide-line {
+    width: 100%;
+    height: 0px;
+    border-top: 5px #e0e0e0 solid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.divide-line.time{
+    margin-bottom: 30px;
+}
+
+.external-link {
+    width:90%;
+    height:50px;
+    float:left;
+    text-align:center;
+    margin-bottom: 5px;
+    border: 1px #c0c0c0 solid;
+}
+
+#tweet {
+    height: 200px;
+    background-color: #ddddff;
+}
+
+.post {
+/*    float:right*/
+    width: 90%;
+    min-height: 50px;
+    margin-left:     auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+/*    background-color: #00ff*/
+    border: 1px solid #0000ff;
+    padding: 10px;
+}
+
+.post img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+}
+
+#new-post button{
+    float: right;
+/*    margin-right: 10px;*/
+}
+
+.clear {
+    clear: both;
+}
+
+#new-post-form {
+    padding: 10px;
+    width: 100%;
+}
