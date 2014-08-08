@@ -53,11 +53,11 @@ var routes  = require('./routes');
 //var users   = require('./routes/user');
 
 var fs = require('fs');
-app.get('/main.html', function(req, res){
+app.get('/', function(req, res){
     var readable = fs.createReadStream('./main.html');
     readable.pipe(res);
 });
-app.get('/', routes.index);
+//app.get('/', routes.index);
 //app.post('/photo_upload', routes.photo);
 app.post('/post', routes.post);
 app.get('/post', routes.post);

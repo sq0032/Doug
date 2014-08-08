@@ -102,36 +102,83 @@ app.SubmitView = Backbone.View.extend({
         //this.$el.html(' ');
     },
     submitPost: function(){
+        if(this.validatePost()==true)
+        {
+            var name        = this.$('#InputName').val();
+            var title       = this.$('#InputTitle').val();
+            var text        = this.$('textarea').val();
+            if(this.photo!=null){
+                var photo_path  = this.photo.files[0].name; 
+            }
+            //var photo   = this.$('#InputFile').files;
+            //alert(photo);
+
+            var post    = new app.Post({
+                name        : name,
+                title       : title,
+                text        : text,
+                photo_path  : photo_path,
+            });
+
+            //Ask server to save the post into database
+            var that = this;
+            post.save(null,{
+                success: function(post, response){
+                    if(that.photo!=null){
+                        that.photo.submit();
+                    }
+
+                    app.posts.add(post);
+                    that.$('input').val('');
+                    that.$('textarea').val('');
+                    that.$el.modal('hide');
+                },
+                error: function(model, response){
+                    alert(response);
+                }
+            });
+        }
+        this.$('#InputPassword').val('');
+    },
+    validatePost: function(){
         var name        = this.$('#InputName').val();
         var title       = this.$('#InputTitle').val();
         var text        = this.$('textarea').val();
-        var photo_path  = this.photo.files[0].name; 
-        //var photo   = this.$('#InputFile').files;
-        //alert(photo);
+        var pass        = this.$('#InputPassword').val();
+        //var photo_path  = this.photo.files[0].name;
         
-        var post    = new app.Post({
-            name        : name,
-            title       : title,
-            text        : text,
-            photo_path  : photo_path,
-        });
+        var check       = true;
         
-        //Ask server to save the post into database
-        var that = this;
-        post.save(null,{
-            success: function(post, response){
-                that.photo.submit();
-                
-                app.posts.add(post);
-                that.$('input').val('');
-                that.$('textarea').val('');
-                that.$el.modal('hide');
-            },
-            error: function(model, response){
-                alert(response);
-            }
-        });
-    },
+        if(name==''){
+            this.$('#InputName').parent().addClass('has-error');
+            check = false;
+        }else{
+            this.$('#InputName').parent().removeClass('has-error');
+        }
+        
+        if(title==''){
+            this.$('#InputTitle').parent().addClass('has-error');
+            check = false;
+        }else{
+            this.$('#InputTitle').parent().removeClass('has-error');
+        }
+        
+        if(pass!=1234){
+            this.$('#InputPassword').parent().addClass('has-error');
+            check = false;
+        }else{
+            this.$('#InputPassword').parent().removeClass('has-error');
+        }
+        
+        if(text==''){
+            this.$('textarea').parent().addClass('has-error');
+            check = false;
+        }else{
+            this.$('textarea').parent().removeClass('has-error');
+        }
+        
+        return check;
+    }
 })
 
 app.AppView = Backbone.View.extend({
