@@ -15,12 +15,14 @@ exports.post = function(req, res){
         var title   = req.body['title'];
         var text    = req.body['text'];
         var photo   = req.body['photo_path'];
+        var photo_top_check = req.body['photo_top_check'];
         
         var post = new Post({
                 name    : name,
                 title   : title,
                 text    : text,
                 photo   : photo,
+                photo_top_check : photo_top_check,
         });
         
         post.save(function(err, post){
@@ -28,7 +30,17 @@ exports.post = function(req, res){
             res.send(post);
         });
     }else if(req.method=='GET'){
-        var query = Post.find(function(err, posts){
+//        console.log(req.url);
+        console.log(req.query['index']);
+        var index = 0;
+        if(req.query['index']){
+            index = req.query['index'];
+        }
+//        var query = Post.find().sort('-date').limit(5).exec(function(err, posts){
+//            if(err) throw err;
+//            res.send(posts);
+//        });
+        var query = Post.find().sort('-date').skip(index).limit(3).exec(function(err, posts){
             if(err) throw err;
             res.send(posts);
         });

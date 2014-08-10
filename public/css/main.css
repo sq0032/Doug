@@ -125,6 +125,7 @@ img {
     text-align:center;
     margin-bottom: 5px;
     border: 1px #c0c0c0 solid;
+    cursor: pointer;
 }
 
 #tweet {
@@ -163,4 +164,10 @@ img {
 #new-post-form {
     padding: 10px;
     width: 100%;
+}
+
+#readmore {
+    float: right;
+    color: #0000ee;
+    cursor: pointer;
 }

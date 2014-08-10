@@ -28,6 +28,7 @@ app.PostView = Backbone.View.extend({
         var date    = this.post.get('date');
         var title   = this.post.get('title');
         var photo   = this.post.get('photo');
+        var photo_top= this.post.get('photo_top_check');
         
         var titleHtml   = "<h4>"+title+"</h4>";
         var textHtml    = "<p>"+text+"<p>";
@@ -42,7 +43,11 @@ app.PostView = Backbone.View.extend({
 //        this.$el.html(titleHtml);
         if(typeof(photo)!='undefined'){
 //            this.$el.prepend(photoHtml);
-            html = buttonHtml+titleHtml+photoHtml+textHtml+dateHtml;
+            if(photo_top=='on')
+                html = buttonHtml+titleHtml+photoHtml+textHtml+dateHtml;
+            else
+                html = buttonHtml+titleHtml+textHtml+photoHtml+dateHtml;
+            
         }else{
             html = buttonHtml+titleHtml+textHtml+dateHtml;
         }
@@ -58,6 +63,9 @@ app.PostView = Backbone.View.extend({
 
 app.TimeLineView = Backbone.View.extend({
     el: '#timeline',
+    events:{
+        'click #readmore':  'readPosts',
+    },
     initialize: function(){
         //this.render();
         
@@ -73,7 +81,18 @@ app.TimeLineView = Backbone.View.extend({
     },
     renderPost: function(post){
         var postView = new app.PostView({model:post});
-        this.$el.append(postView.el);
+        postView.$el.insertBefore(this.$('#readmore'));
+    },
+    readPosts: function(){
+        var n = app.posts.length;
+        var that = this;
+        $.get('/post', {index: n})
+         .done(function(data){
+            console.log(data);
+            for(i = 0; i < data.length; i++){
+                app.posts.add(data[i]);
+            }
+         });
     }
 })
 
@@ -93,17 +112,30 @@ app.SubmitView = Backbone.View.extend({
     
         $('#fileupload').fileupload({
             //url: '/photo_upload',
-            autoUpload: false,
+            autoUpload: true,
             dataType: 'multipart/form-data',
             singleFileUploads:true,
             disableImageResize: false,
             imageMaxWidth:800,
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                that.$('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+            }
         }).on('fileuploadadd', function(e, data){
             that.photo = data;
             that.photo.url = '/photo_upload';
             that.$('#files').html(data.files[0].name);
 //            that.photo.submit();
 //            console.log(data);
+        }).on('fileuploaddone', function(e, data){
+            that.$('#progress .progress-bar').css(
+                'width',
+                '0%'
+            );
+            that.$('#files').html('');
         });
     },
     render: function(){
@@ -115,6 +147,7 @@ app.SubmitView = Backbone.View.extend({
             var name        = this.$('#InputName').val();
             var title       = this.$('#InputTitle').val();
             var text        = this.$('textarea').val();
+            var photo_top_check = this.$('#photo_top').val();
             if(this.photo!=null){
                 var photo_path  = this.photo.files[0].name; 
             }
@@ -122,10 +155,11 @@ app.SubmitView = Backbone.View.extend({
             //alert(photo);
 
             var post    = new app.Post({
-                name        : name,
-                title       : title,
-                text        : text,
-                photo_path  : photo_path,
+                name            : name,
+                title           : title,
+                text            : text,
+                photo_path      : photo_path,
+                photo_top_check : photo_top_check
             });
 
             //Ask server to save the post into database
@@ -133,6 +167,7 @@ app.SubmitView = Backbone.View.extend({
             post.save(null,{
                 success: function(post, response){
                     if(that.photo!=null){
+                        //POST photo to /photo_upload
                         that.photo.submit();
                     }
 

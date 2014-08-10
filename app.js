@@ -61,6 +61,7 @@ app.get('/', function(req, res){
 //app.post('/photo_upload', routes.photo);
 app.post('/post', routes.post);
 app.get('/post', routes.post);
+//app.get('/post/:num', routes.post);
 app.delete('/post/:id(*)', routes.post);   
 
 
